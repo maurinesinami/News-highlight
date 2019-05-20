@@ -1,11 +1,11 @@
-from flask import render_template
-from app import app
-from .request import get_sources, get_articles, search_articles
-
+from flask import render_template ,request ,redirect,url_for
+from . import main
+from ..request import get_sources, get_articles, search_articles
+from ..models import Source , Articles
 #Views
 
 
-@app.route('/')
+@main.route('/')
 def index():
     '''
     View root page.
@@ -26,7 +26,7 @@ def index():
     return render_template('index.html', title=title, business=business_sources, entertainment=entertainment_sources, sports=sports_sources, general=general_sources, technology=technology_sources)
 
 
-@app.route('/source/<id>')
+@main.route('/source/<id>')
 def source(id):
     '''
     View source page.

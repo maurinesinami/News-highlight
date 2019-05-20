@@ -1,6 +1,6 @@
-from app import app
+
 import urllib.request,json
-from .models.news import Source, Articles
+from .models import Source, Articles
  
 api_key = None
 base_url = None
