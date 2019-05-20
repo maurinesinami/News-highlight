@@ -73,4 +73,4 @@ Feel free to reach out to the developer at:
 * Mobile: 0700151874
 * Email: maurine.sinami@gmail.com
 ## License
-MIT License Copyright (c) {2019} Maurine sinami
+MIT License Copyright (c) Maurine sinami
