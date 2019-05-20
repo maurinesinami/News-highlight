@@ -1,17 +1,40 @@
 from flask import render_template
 from app import app
+from .request import get_sources, get_articles, search_articles
 
-# Views
+#Views
+
+
 @app.route('/')
 def index():
+    '''
+    View root page.
+    ''' 
 
+    title = 'Home - NewsApp'
+
+    business_sources = get_sources('business')
+
+    entertainment_sources = get_sources('entertainment')
+
+    general_sources = get_sources('general')
+
+    sports_sources = get_sources('sports')
+
+    technology_sources = get_sources('technology')
+
+    return render_template('index.html', title=title, business=business_sources, entertainment=entertainment_sources, sports=sports_sources, general=general_sources, technology=technology_sources)
+
+
+@app.route('/source/<id>')
+def source(id):
     '''
-    View root page function that returns the index page and its data
+    View source page.
     '''
-    title = 'news-highlights'
-    return render_template('index.html',title = title)
-@app.route('/news/<int:news_id>')
-def news(news_id):
-    '''view news page function that returns the movie details page and its data
-    '''
-    return render_template('news.html',id = news_id)
+    all_articles = get_articles(id)
+    title = f'NewsApp -- {id}'
+    id_id = id
+
+    return render_template('articles.html', articles=all_articles, title=title, id_id=id_id)
+
+
